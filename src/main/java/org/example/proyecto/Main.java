@@ -1,17 +1,38 @@
 package org.example.proyecto;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
    public static void main(String[] args) {
-      //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-      // to see how IntelliJ IDEA suggests fixing it.
-      System.out.printf("Hello and welcome!");
 
-      for (int i = 1; i <= 5; i++) {
-         //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-         // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-         System.out.println("i = " + i);
+   Operation operation = new Operation() {
+      @Override
+      public int operate(int a, int b) {
+         return a + b;
       }
+   };
+
+   System.out.println(operation.operate(1, 2));
+
+   Operation multiply = (a, b) -> a * b;
+   System.out.println(multiply.operate(14, 2));
+
+   Operation subtraction = (a, b) -> a - b;
+   System.out.println(subtraction.operate(12, 2));
+   }
+}
+
+@FunctionalInterface
+interface Operation{
+   int operate(int a, int b);
+
+   default String show(){
+      return "Soy una operacion";
+   }
+
+   default String show2(){
+      return "Soy otra operacion";
+   }
+
+   static Operation substraction(){
+      return (int a, int b) -> a - b;
    }
 }
