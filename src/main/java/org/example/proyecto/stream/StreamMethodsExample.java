@@ -1,5 +1,6 @@
 package org.example.proyecto.stream;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -7,6 +8,8 @@ import java.util.stream.Collectors;
 public class StreamMethodsExample {
    public static void main(String[] args) {
       List<String> names = List.of("Anderson", "Juan", "Maria", "Ana", "Pedro", "Alicia", "Ana", "Juan");
+      List<String> names2 = Arrays.asList("Anderson", "Juan", "Maria", "Ana", "Pedro", "Alicia", "Ana", "Juan");
+
       names.stream().filter(name -> name.startsWith("A")).toList();
 
       List<Integer> lenghtNames = names.stream().map(String::length).collect(Collectors.toList());
